@@ -21,7 +21,8 @@ class Terminal(object):
 
     def load_commands(self):
         self.commands = dict(
-            [(cls.get_command(), cls(self)) for name, cls in apps.__dict__.items() if isinstance(cls, type)])
+            [(cls.get_command(), cls(self)) for name, cls in apps.__dict__.items() if
+             isinstance(cls, type) and issubclass(cls, apps.App) and cls.__name__ is not 'App'])
 
     def run(self):
         while self.running:

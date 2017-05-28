@@ -1,4 +1,5 @@
 from apps.app import App
+from files import Folder
 
 
 class MkDir(App):
@@ -15,7 +16,6 @@ class MkDir(App):
         return 'Make new directory.'
 
     def call(self, args):
-        from files import Folder
         new_dir = args[0]
         directory_exists = new_dir in [folder.name for folder in self.console.path.subfolders]
         if not directory_exists:
