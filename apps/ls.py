@@ -1,4 +1,4 @@
-from apps.app import App
+from .app import App
 
 
 class LS(App):
@@ -16,6 +16,3 @@ class LS(App):
 
     def call(self, args):
         print('   '.join([f.name for f in self.console.path.subfolders]))
-
-
-

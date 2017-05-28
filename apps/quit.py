@@ -1,4 +1,4 @@
-from apps.app import App
+from .app import App
 
 
 class Quit(App):
