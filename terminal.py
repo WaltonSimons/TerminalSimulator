@@ -17,7 +17,7 @@ class Terminal(object):
         return str(self.path)
 
     def prompt(self):
-        return '%s@%s %s %s ' % (self.user, self.host, self.path_string(), self._prompt)
+        return '%s@%s %s %s ' % (self.user, self.host.name, self.path_string(), self._prompt)
 
     def load_commands(self):
         self.commands = dict(

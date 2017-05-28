@@ -1,5 +1,8 @@
 from terminal import Terminal
+from host import Host
+from network import Network
 from files import Folder
+
 
 f1 = Folder('home')
 
@@ -20,6 +23,11 @@ f1.add_subfolder(f2)
 f1.add_subfolder(f3)
 f1.add_subfolder(Folder('Pictures'))
 
-
-terminal = Terminal('jcd', 'jcd-l', f4)
-terminal.run()
+network = Network('Internet')
+host = Host('jcd', 'jcd-l', 'dupa')
+host2 = Host('nsa', '123.456.7.8', 'xkey')
+network.add_host(host)
+network.add_host(host2)
+terminal = Terminal('jcd', host, f4)
+host.terminal = terminal
+host.connect()
