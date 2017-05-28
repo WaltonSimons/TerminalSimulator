@@ -5,11 +5,11 @@ class Terminal(object):
     def __init__(self):
         self.running = True
         self.commands = {}
-        self._terminal_prefix = '>'
+        self._prompt = '>'
         self.load_commands()
 
-    def terminal_prefix(self):
-        return self._terminal_prefix + ' '
+    def prompt(self):
+        return self._prompt + ' '
 
     def load_commands(self):
         self.commands = dict(
@@ -17,7 +17,7 @@ class Terminal(object):
 
     def run(self):
         while self.running:
-            full_command = input(self.terminal_prefix())
+            full_command = input(self.prompt())
             l = full_command.split()
             command, args = l[0], l[1:]
             if command in self.commands:

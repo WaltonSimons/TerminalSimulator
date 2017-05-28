@@ -1,10 +1,10 @@
-from abc import abstractmethod
+from apps.app import App
 
 
-class App(object):
+class CD(App):
 
     def __init__(self, console):
-        self.console = console
+        super().__init__(console)
 
     @staticmethod
     def get_command():
@@ -15,8 +15,8 @@ class App(object):
         return 'Changes current directory.'
 
     def call(self, args):
-        current_path = self.console._terminal_prefix[1:]
+        current_path = self.console._prompt[1:]
         if args[0] == '..':
-            self.console._terminal_prefix = '>' + '/'.join(current_path.split('/')[:-1])
+            self.console._prompt = '>' + '/'.join(current_path.split('/')[:-1])
         else:
-            self.console._terminal_prefix = '>' + args[0]
+            self.console._prompt = '>' + args[0]

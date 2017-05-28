@@ -1,7 +1,10 @@
-class Help(object):
+from apps.app import App
+
+
+class Help(App):
 
     def __init__(self, console):
-        self.console = console
+        super().__init__(console)
 
     @staticmethod
     def get_command():
