@@ -27,7 +27,7 @@ class Terminal(object):
     def run(self):
         while self.running:
             full_command = input(self.prompt())
-            l = full_command.split()
+            l = full_command.split(' ', 1)
             if len(l) > 0:
                 command, args = l[0], l[1:]
                 if command in self.commands:

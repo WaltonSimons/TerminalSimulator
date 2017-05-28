@@ -12,6 +12,9 @@ class Folder(object):
         sub.parent = self
         self.subfolders.append(sub)
 
+    def remove_subfolder(self, sub):
+        self.subfolders.remove(sub)
+
     def list_directory(self, indent=0):
         print('    '*indent + '/' + self.name)
         for sub in self.subfolders:
