@@ -15,8 +15,8 @@ class CD(App):
         return 'Changes current directory.'
 
     def call(self, args):
-        current_path = self.console._prompt[1:]
+        current_path = self.console._path[1:]
         if args[0] == '..':
-            self.console._prompt = '>' + '/'.join(current_path.split('/')[:-1])
+            self.console._path = '/' + '/'.join(current_path.split('/')[:-1])
         else:
-            self.console._prompt = '>' + args[0]
+            self.console._path = '/' + '/'.join(filter(bool, args[0].split('/')))
