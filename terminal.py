@@ -33,4 +33,3 @@ class Terminal(object):
                     self.commands[command].call(args)
                 else:
                     print('Unrecognized command %s.' % command)
-
