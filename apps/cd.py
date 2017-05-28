@@ -15,8 +15,18 @@ class CD(App):
         return 'Changes current directory.'
 
     def call(self, args):
-        current_path = self.console._path[1:]
-        if args[0] == '..':
-            self.console._path = '/' + '/'.join(current_path.split('/')[:-1])
-        else:
-            self.console._path = '/' + '/'.join(filter(bool, args[0].split('/')))
+        dir = args[0]
+
+        if dir == '..':
+            if self.console.path.parent is not None:
+                self.console.path = self.console.path.parent
+                return
+        dirlist = [x for x in dir.split('/') if x]
+
+        if len(dirlist) > 0:
+            for sub in self.console.path.subfolders:
+                if sub.name == dirlist[0]:
+                    self.console.path = sub
+
+
+

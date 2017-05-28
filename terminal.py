@@ -1,22 +1,23 @@
 import apps
+from files import Folder
 
 
 class Terminal(object):
-    def __init__(self, user, host):
+    def __init__(self, user, host, path=Folder('home')):
         self.running = True
         self.commands = {}
         self.user = user
         self.host = host
+        self.path = path
 
-        self._path = '/'
         self._prompt = '>'
         self.load_commands()
 
-    def path(self):
-        return self._path
+    def path_string(self):
+        return str(self.path)
 
     def prompt(self):
-        return '%s@%s %s %s ' % (self.user, self.host, self.path(), self._prompt)
+        return '%s@%s %s %s ' % (self.user, self.host, self.path_string(), self._prompt)
 
     def load_commands(self):
         self.commands = dict(
