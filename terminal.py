@@ -41,3 +41,20 @@ class Terminal(object):
 
     def print(self, msg):
         print(msg)
+
+    @staticmethod
+    def get_args_and_kwargs(string):
+        l = string.split()
+        kwargs = dict()
+        args = []
+        for arg in l:
+            if arg[0] == '-':
+                argval = arg[1:].split('=')
+                if len(argval) > 1:
+                    kwarg, value = arg[1:].split('=')
+                    kwargs[kwarg] = value
+                else:
+                    kwargs[argval] = True
+            else:
+                args.append(arg)
+        return args, kwargs
