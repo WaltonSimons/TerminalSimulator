@@ -1,5 +1,8 @@
 import apps
 from files import Folder
+from colorama import Fore, Back, Style
+
+Fore.BOLD = '\033[1m'
 
 
 class Terminal(object):
@@ -17,7 +20,8 @@ class Terminal(object):
         return str(self.path)
 
     def prompt(self):
-        return '%s@%s %s %s ' % (self.user, self.host.name, self.path_string(), self._prompt)
+        return (Fore.BOLD + Fore.GREEN + '%s@%s' + Fore.BLUE + ' %s' + Style.RESET_ALL + ' %s ') % (
+        self.user, self.host.name, self.path_string(), self._prompt)
 
     def load_commands(self):
         self.commands = dict(
@@ -33,4 +37,7 @@ class Terminal(object):
                 if command in self.commands:
                     self.commands[command].call(args)
                 else:
-                    print('Unrecognized command %s.' % command)
+                    self.print('Unrecognized command %s.' % command)
+
+    def print(self, msg):
+        print(msg)

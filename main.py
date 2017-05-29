@@ -24,10 +24,8 @@ f1.add_subfolder(f3)
 f1.add_subfolder(Folder('Pictures'))
 
 network = Network('Internet')
-host = Host('jcd', 'jcd-l', 'dupa')
+host = Host('jcd', 'jcd-l', 'dupa', f1)
 host2 = Host('nsa', '123.456.7.8', 'xkey')
 network.add_host(host)
 network.add_host(host2)
-terminal = Terminal('jcd', host, f4)
-host.terminal = terminal
 host.connect()

@@ -4,9 +4,10 @@ from terminal import Terminal
 
 class Host(object):
 
-    def __init__(self, user, name, password):
+    def __init__(self, user, name, password, folder = Folder('home')):
         self.name = name
-        self.terminal = Terminal(user, self, Folder('home'))
+        self.main_folder = folder
+        self.terminal = Terminal(user, self, self.main_folder)
         self.password = password
         self.network = None
 

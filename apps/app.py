@@ -3,8 +3,8 @@ from abc import abstractmethod
 
 class App(object):
 
-    def __init__(self, console):
-        self.console = console
+    def __init__(self, terminal):
+        self.terminal = terminal
 
     @staticmethod
     def get_command():

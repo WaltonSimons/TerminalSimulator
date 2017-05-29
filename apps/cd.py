@@ -3,8 +3,8 @@ from apps.app import App
 
 class CD(App):
 
-    def __init__(self, console):
-        super().__init__(console)
+    def __init__(self, terminal):
+        super().__init__(terminal)
 
     @staticmethod
     def get_command():
@@ -18,15 +18,15 @@ class CD(App):
         dir = args[0]
 
         if dir == '..':
-            if self.console.path.parent is not None:
-                self.console.path = self.console.path.parent
+            if self.terminal.path.parent is not None:
+                self.terminal.path = self.terminal.path.parent
                 return
         dirlist = [x for x in dir.split('/') if x]
 
         if len(dirlist) > 0:
-            for sub in self.console.path.subfolders:
+            for sub in self.terminal.path.subfolders:
                 if sub.name == dirlist[0]:
-                    self.console.path = sub
+                    self.terminal.path = sub
 
 
 

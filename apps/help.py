@@ -3,8 +3,8 @@ from apps.app import App
 
 class Help(App):
 
-    def __init__(self, console):
-        super().__init__(console)
+    def __init__(self, terminal):
+        super().__init__(terminal)
 
     @staticmethod
     def get_command():
@@ -15,5 +15,5 @@ class Help(App):
         return 'Shows this list.'
 
     def call(self, args):
-        for command, cls in self.console.commands.items():
-            print(command + ' - ' + cls.get_description())
+        for command, cls in self.terminal.commands.items():
+            self.terminal.print(command + ' - ' + cls.get_description())

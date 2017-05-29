@@ -3,16 +3,16 @@ from apps.app import App
 
 class Quit(App):
 
-    def __init__(self, console):
-        super().__init__(console)
+    def __init__(self, terminal):
+        super().__init__(terminal)
 
     @staticmethod
     def get_command():
-        return 'quit'
+        return 'disconnect'
 
     @staticmethod
     def get_description():
-        return 'Exits current terminal.'
+        return 'Disconnects from terminal.'
 
     def call(self, args):
-        self.console.running = False
+        self.terminal.running = False
