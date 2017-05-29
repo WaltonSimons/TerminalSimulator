@@ -17,7 +17,7 @@ class MkDir(App):
 
     def call(self, args):
         new_dir = args[0]
-        directory_exists = new_dir in [folder.name for folder in self.terminal.path.subfolders]
+        directory_exists = self.terminal.path.file_exists(new_dir)
         if not directory_exists:
             self.terminal.path.add_subfolder(Folder(new_dir))
         else:

@@ -1,8 +1,8 @@
 from apps.app import App
+from colorama import Fore, Back, Style
 
 
 class LS(App):
-
     def __init__(self, terminal):
         super().__init__(terminal)
 
@@ -15,4 +15,7 @@ class LS(App):
         return 'Lists subfolders and files.'
 
     def call(self, args):
-        self.terminal.print('   '.join([f.name for f in self.terminal.path.subfolders]))
+        self.terminal.print(
+            Fore.BLUE + '   '.join(
+                [f.name for f in self.terminal.path.subfolders]) + Style.RESET_ALL + '   ' + '   '.join(
+                [f.name for f in self.terminal.path.files]))
