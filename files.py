@@ -33,6 +33,33 @@ class Folder(object):
     def file_exists(self, name):
         return name in [sub.name for sub in self.subfolders] + [file.name for file in self.files]
 
+    def get_subfolder(self, name):
+        if name == '..':
+            return self.parent if self.parent is not None else self
+        for subfolder in self.subfolders:
+            if subfolder.name == name:
+                return subfolder
+        return None
+
+    @staticmethod
+    def get_root_folder(folder):
+        return folder.get_root_folder(folder.parent) if folder.parent is not None else folder
+
+    def get_folder_by_path(self, path):
+        from_root = path[0] == '/'
+        current_folder = self.get_root_folder(self) if from_root else self
+        path = path.split('/')
+
+        if from_root:
+            path = path[2:]
+
+        for name in path:
+            if current_folder:
+                current_folder = current_folder.get_subfolder(name)
+            else:
+                return False
+        return current_folder
+
     def __str__(self):
         this = '/%s' % self.name
         return self.parent.__str__() + this if self.parent else this

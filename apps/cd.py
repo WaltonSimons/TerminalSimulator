@@ -17,7 +17,12 @@ class CD(App):
     def call(self, *args, **kwargs):
         dir = args[0]
 
-        if dir == '..':
+        folder = self.terminal.path.get_folder_by_path(dir)
+
+        if folder:
+            self.terminal.path = folder
+
+        '''if dir == '..':
             if self.terminal.path.parent is not None:
                 self.terminal.path = self.terminal.path.parent
                 return
@@ -26,7 +31,7 @@ class CD(App):
         if len(dirlist) > 0:
             for sub in self.terminal.path.subfolders:
                 if sub.name == dirlist[0]:
-                    self.terminal.path = sub
+                    self.terminal.path = sub'''
 
 
 
