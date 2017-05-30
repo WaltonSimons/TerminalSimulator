@@ -15,5 +15,5 @@ class Tree(App):
     def get_description():
         return 'Shows current directory as a tree.'
 
-    def call(self, args):
+    def call(self, *args, **kwargs):
         self.terminal.path.list_directory()

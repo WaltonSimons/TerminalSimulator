@@ -15,7 +15,7 @@ class MkDir(App):
     def get_description():
         return 'Make new directory.'
 
-    def call(self, args):
+    def call(self, *args, **kwargs):
         new_dir = args[0]
         directory_exists = self.terminal.path.file_exists(new_dir)
         if not directory_exists:

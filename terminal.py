@@ -35,7 +35,7 @@ class Terminal(object):
             if len(l) > 0:
                 command, args = l[0], l[1:]
                 if command in self.commands:
-                    self.commands[command].call(args)
+                    self.commands[command].call(self.get_args_and_kwargs(args[0] if args else ''))
                 else:
                     self.print('Unrecognized command %s.' % command)
 
@@ -54,7 +54,7 @@ class Terminal(object):
                     kwarg, value = arg[1:].split('=')
                     kwargs[kwarg] = value
                 else:
-                    kwargs[argval] = True
+                    kwargs[argval[0]] = True
             else:
                 args.append(arg)
         return args, kwargs

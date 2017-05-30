@@ -14,7 +14,7 @@ class SSH(App):
     def get_description():
         return 'Connects to another host.'
 
-    def call(self, args):
+    def call(self, *args, **kwargs):
         user, hostname = args[0].split('@')
         host = self.terminal.host.network.get_host(hostname)
         if host is not None:

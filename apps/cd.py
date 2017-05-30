@@ -14,7 +14,7 @@ class CD(App):
     def get_description():
         return 'Changes current directory.'
 
-    def call(self, args):
+    def call(self, *args, **kwargs):
         dir = args[0]
 
         if dir == '..':

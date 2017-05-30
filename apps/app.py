@@ -15,5 +15,5 @@ class App(object):
         return ''
 
     @abstractmethod
-    def call(self, args):
+    def call(self, *args, **kwargs):
         return NotImplemented

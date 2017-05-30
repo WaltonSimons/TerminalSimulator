@@ -14,5 +14,5 @@ class Quit(App):
     def get_description():
         return 'Disconnects from terminal.'
 
-    def call(self, args):
+    def call(self, *args, **kwargs):
         self.terminal.running = False

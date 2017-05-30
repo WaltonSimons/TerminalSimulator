@@ -15,7 +15,7 @@ class RM(App):
     def get_description():
         return 'Removes directory or file.'
 
-    def call(self, args):
+    def call(self, *args, **kwargs):
         remove_name = args[0]
         directory_exists = remove_name in [folder.name for folder in self.terminal.path.subfolders]
         if directory_exists:

@@ -14,6 +14,6 @@ class Help(App):
     def get_description():
         return 'Shows this list.'
 
-    def call(self, args):
+    def call(self, *args, **kwargs):
         for command, cls in self.terminal.commands.items():
             self.terminal.print(command + ' - ' + cls.get_description())
