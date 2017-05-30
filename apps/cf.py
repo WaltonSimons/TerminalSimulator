@@ -16,7 +16,6 @@ class CF(App):
         return 'Create new file.'
 
     def call(self, *args, **kwargs):
-        args = args[0].split()
         if len(args) <= 1:
             self.terminal.print('cf: please specify file format')
             return
