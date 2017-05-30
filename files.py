@@ -10,15 +10,21 @@ class Folder(object):
         self.files = []
 
     def add_subfolder(self, sub):
-        sub.parent = self
-        self.subfolders.append(sub)
+        if not self.file_exists(sub.name):
+            sub.parent = self
+            self.subfolders.append(sub)
+            return True
+        return False
 
     def remove_subfolder(self, sub):
         self.subfolders.remove(sub)
 
     def add_file(self, file):
-        file.parent = self
-        self.files.append(file)
+        if not self.file_exists(file.name):
+            file.parent = self
+            self.files.append(file)
+            return True
+        return False
 
     def remove_file(self, file):
         self.files.remove(file)
@@ -41,6 +47,12 @@ class Folder(object):
                 return subfolder
         return None
 
+    def get_file(self, name):
+        for file in self.files:
+            if file.name == name:
+                return file
+        return None
+
     @staticmethod
     def get_root_folder(folder):
         return folder.get_root_folder(folder.parent) if folder.parent is not None else folder
@@ -59,6 +71,16 @@ class Folder(object):
             else:
                 return False
         return current_folder
+
+    def get_file_by_path(self, path):
+        not_local = len(path.rsplit('/', 1)) > 1
+        if not_local:
+            path, file_name = path.rsplit('/', 1)
+            folder = self.get_folder_by_path(path)
+        else:
+            file_name = path
+            folder = self
+        return folder.get_file(file_name) if folder is not None else None
 
     def __str__(self):
         this = '/%s' % self.name
