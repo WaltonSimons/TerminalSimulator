@@ -8,7 +8,7 @@ class Quit(App):
 
     @staticmethod
     def get_command():
-        return 'disconnect'
+        return 'exit'
 
     @staticmethod
     def get_description():
